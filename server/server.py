@@ -22,8 +22,10 @@ class NextBlog(web.RequestHandler):
         c.append(turl) #Append the blog to the crawled list.
         open("crawled.json", "w").write(json.dumps(c)) #Put the list in the file.
 
-        client = httpclient.HTTPClient()
-        client.fetch("http://localhost/path/to/recent/?newurlis=" + turl) #Let the recent server know we've crawled this domain.
+        ## UNCOMMENT TO ENABLE recent
+        
+        #client = httpclient.HTTPClient()
+        #client.fetch("http://localhost/path/to/recent/?newurlis=" + turl) #Let the recent server know we've crawled this domain.
 
         del tocrawl[num] #Delete from tocrawl
         self.write("https://www.tumblr.com/ask_form/" + turl) #Send url to the client.
