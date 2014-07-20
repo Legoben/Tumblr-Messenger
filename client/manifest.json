@@ -1,0 +1,22 @@
+{
+"name":"Tumblr Crawler",
+"author":"Ben",
+"description":"Automatically send messages on Tumblr.",
+"version":"1.0",
+"manifest_version":2,
+"content_scripts": [
+    {
+        "matches": ["http://www.tumblr.com/ask_form/*/success","https://www.tumblr.com/ask_form/*/success"],
+        "js": ["jquery.js","end.js"],
+        "run_at":"document_end"
+    },
+    {
+        "matches": ["http://www.tumblr.com/ask_form/*","https://www.tumblr.com/ask_form/*"],
+        "js": ["jquery.js","inject.js"],
+        "run_at":"document_end"
+    }
+  ],
+"web_accessible_resources": ["inject.js","index.js"],
+"permissions": ["cookies","https://tumblr.com/","http://tumblr.com/", "http://*/"],
+"short_name": "TCrawler"
+}
